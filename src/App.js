@@ -11,6 +11,8 @@ class App extends Component {
           initialValues={{
             email: '',
             password: '',
+            input: '',
+            inputField: '',
           }}
           onSubmit={values => {
             console.log(values);
@@ -39,6 +41,25 @@ class App extends Component {
                       value={field.value}
                       onChange={field.onChange}
                       label="textfield losing focus due to remount ?"
+                    />
+                  )}
+                />
+                <label htmlFor="input">normal input</label>
+                <input
+                  id="input"
+                  onChange={handleChange}
+                  name="input"
+                  value={values.input}
+                />
+                <label htmlFor="inputField">input wrapped in Field</label>
+                <Field
+                  name="inputField"
+                  component={({ field }) => (
+                    <input
+                      id="inputField"
+                      name={field.name}
+                      value={field.value}
+                      onChange={field.onChange}
                     />
                   )}
                 />
