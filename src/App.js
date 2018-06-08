@@ -9,8 +9,10 @@ class App extends Component {
       <div className="App">
         <Formik
           initialValues={{
-            email: '',
-            password: '',
+            textfield: '',
+            textfieldField: '',
+            input: '',
+            inputField: '',
           }}
           onSubmit={values => {
             console.log(values);
@@ -26,19 +28,38 @@ class App extends Component {
             <form onSubmit={handleSubmit}>
               <div style={{ display: 'flex', flexDirection: 'column' }}>
                 <TextField
-                  name="email"
-                  value={values.email}
+                  name="textfield"
+                  value={values.textfield}
                   onChange={handleChange}
                   label="working textfield"
                 />
                 <Field
-                  name="password"
+                  name="textfieldField"
                   component={({ field }) => (
                     <TextField
                       name={field.name}
                       value={field.value}
                       onChange={field.onChange}
                       label="textfield losing focus due to remount ?"
+                    />
+                  )}
+                />
+                <label htmlFor="input">normal input</label>
+                <input
+                  id="input"
+                  onChange={handleChange}
+                  name="input"
+                  value={values.input}
+                />
+                <label htmlFor="inputField">input wrapped in Field</label>
+                <Field
+                  name="inputField"
+                  component={({ field }) => (
+                    <input
+                      id="inputField"
+                      name={field.name}
+                      value={field.value}
+                      onChange={field.onChange}
                     />
                   )}
                 />
